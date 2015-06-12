@@ -38,5 +38,5 @@ for line in tf.readlines():
 
 print "Trainning dataset"
 st = BackpropTrainer(n,learningrate=0.01,momentum=0.5,verbose=True)
-st.trainOnDataset(ds,1000)
+st.trainUntilConvergence(ds)
 st.testOnData(verbose=True)
