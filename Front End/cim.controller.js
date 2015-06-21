@@ -14,7 +14,7 @@ function cim($scope, $q, $http){
 	
 	$scope.userID 	= 0;
 	$scope.mechantID 	= 0;
-	$scope.response 	= {};
+	$scope.result 	= 0;
 	
 	/* --- */
 
@@ -28,7 +28,9 @@ function cim($scope, $q, $http){
             async:false,
             crossDomain:true,
         }).success(function(response) {
-           $scope.response = response;
+        	
+           $scope.result = (response * 100).toFixed(2);
+           //$scope.result = response ;
         }).error(function(response){
             deferred.reject(response);
         });

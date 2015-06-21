@@ -1,5 +1,9 @@
 import web
+import pickle
+import random
 
+fileObject = open('../netWork.net','r')
+net = pickle.load(fileObject)
 
 urls = (
     '/users', 'list_users',
@@ -15,7 +19,8 @@ class list_users:
 class get_user:
     def GET(self, user, mechant):
         print user + " -- " + mechant
-        return str([user, mechant])
+        
+        return str(net.activate(	[user, mechant])[0])
 
 
 app = web.application(urls, globals())

@@ -72,21 +72,20 @@
 
 						</div>
 					</div>
-				</div>
-			</form>
+				</form>
 
-			<form class="form-horizontal">
-				<h1>
-					RESULTS
-				</h1>
-				<p class="bg-success">Si es mayor a 50%</p>
-				<p class="bg-danger">Si es menor a 50%</p>
-			</form>
+				<form class="form-horizontal" >
+					<h1>RESULTS</h1>
+					<p ng-class="{'bg-success' : result >
+						50 , 'bg-danger' : result
+						<= 50 }">{{result}}%</p>
+					</form>
+
+				</div>
+			</div>
 
 		</div>
 
-	</div>
-
 </body>
 
-</html>
+	</html>
