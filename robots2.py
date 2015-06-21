@@ -5,8 +5,8 @@ from pybrain.structure.modules import TanhLayer
 import csv
 
 ds = SupervisedDataSet(9, 1)
-tf = open('data/train_format2P.csv','r')
-tf2 = open('data/test_format2P.csv','r')
+tf = open('data/train_format2P1.csv','r')
+tf2 = open('data/test_format2P1.csv','r')
 csvfile2 	= open('results.csv','w')
 
 tf.readline()
@@ -24,7 +24,11 @@ trainer = BackpropTrainer(net, ds, learningrate = 0.001, momentum = 0.99)
 print "Trainning"
 
 
-errors  = trainer.trainUntilConvergence(verbose=True, maxEpochs=5)
+errors  = trainer.train()
+errors  = trainer.trainUntilConvergence(verbose=True, maxEpochs=2)
+errors  = trainer.train()
+
+
 print "Finish Trainning"
 
 print errors
@@ -32,8 +36,9 @@ print errors
 spamwriter = csv.writer(csvfile2, delimiter=',', quotechar=',', quoting=csv.QUOTE_MINIMAL)
 
 for line in tf2.readlines():
-    data = [float(x) for x in line.strip().split(',') if x != '']
-	spamwriter.writerow(data[:8], net.activate(data[:8]))
+	data = [float(x) for x in line.strip().split(',') if x != '']
+	spamwriter.writerow([data[:9], net.activate(data[:9])[0]])
+
 
 '''
 x
