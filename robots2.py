@@ -7,7 +7,7 @@ import csv
 ds = SupervisedDataSet(9, 1)
 tf = open('data/train_format2P1.csv','r')
 tf2 = open('data/test_format2P1.csv','r')
-csvfile2 	= open('results.csv','w')
+csvfile2 	= open('results2.csv','w')
 
 tf.readline()
 
@@ -25,7 +25,7 @@ print "Trainning"
 
 
 errors  = trainer.train()
-errors  = trainer.trainUntilConvergence(verbose=True, maxEpochs=2)
+errors  = trainer.trainUntilConvergence(verbose=True, maxEpochs=10)
 errors  = trainer.train()
 
 
